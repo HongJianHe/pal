@@ -3,6 +3,7 @@ package com.pal.controller;
 
 import com.pal.model.User;
 import com.pal.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,10 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/user")
+@Slf4j
 public class UserController {
-    private static Logger log = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserService userService;
-
-
 
     @GetMapping(value = "/all/{pageNum}/{pageSize}", produces = {"application/json;charset=UTF-8"})
     public List<User> findAllUser(@PathVariable("pageNum") int pageNum, @PathVariable("pageSize") int pageSize){
